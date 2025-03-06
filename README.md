@@ -75,5 +75,5 @@ Ce projet est une plateforme web permettant aux **professionnels et étudiants**
 
 ### 1️⃣ Cloner le projet
 ```bash
-git clone https://github.com/votre-repo.git
+git clone [https://github.com/votre-repo.git](https://github.com/MohammedAbd01/PFM-Plateforme-de-Gestion-de-Projets-Collaboratifs.git]
 cd votre-repo
