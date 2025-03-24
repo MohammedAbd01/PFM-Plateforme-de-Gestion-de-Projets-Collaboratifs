@@ -256,7 +256,7 @@ Nous avons conçu CollabSphere avec cette philosophie, créant un environnement 
         <img src="https://avatars.githubusercontent.com/u/87654321" width="100px" style="border-radius: 50%"><br>
         <strong>YOUSSEF BACHAR</strong><br>
         <br>
-        <a href="https://github.com/username"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" width="80"></a>
+        <a href="https://github.com/yusufBchr"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" width="80"></a>
       </td>
     </tr>
   </table>
