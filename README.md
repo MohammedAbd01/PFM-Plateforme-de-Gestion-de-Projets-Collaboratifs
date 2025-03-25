@@ -208,30 +208,6 @@ Nous avons conçu CollabSphere avec cette philosophie, créant un environnement 
   </tr>
 </table>
 
-### Comptes de démonstration
-
-<table>
-  <tr>
-    <th>Type</th>
-    <th>Identifiant</th>
-    <th>Mot de passe</th>
-    <th>Fonctionnalités</th>
-  </tr>
-  <tr>
-    <td><strong>Administrateur</strong></td>
-    <td><code>admin</code></td>
-    <td><code>motdepasse</code></td>
-    <td>Accès complet, gestion utilisateurs, statistiques</td>
-  </tr>
-  <tr>
-    <td><strong>Utilisateur</strong></td>
-    <td><code>marie</code></td>
-    <td><code>motdepasse</code></td>
-    <td>Gestion de projets, tâches, messagerie</td>
-  </tr>
-</table>
-
-
 
 ---
 
