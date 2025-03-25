@@ -12,12 +12,16 @@ $erreur = '';
 $nomUtilisateur = '';
 $email = '';
 
+// Code d'administration - À stocker de manière plus sécurisée dans un environnement de production
+$adminCode = "ADMIN_SEC_23579"; 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nomUtilisateur = $_POST['nom_utilisateur'] ?? '';
     $email = $_POST['email'] ?? '';
     $motDePasse = $_POST['mot_de_passe'] ?? '';
     $confirmationMotDePasse = $_POST['confirmation_mot_de_passe'] ?? '';
     $role = $_POST['role'] ?? 'Utilisateur';
+    $codeAdmin = $_POST['code_admin'] ?? '';
     
     // Valider les données
     if (empty($nomUtilisateur) || empty($email) || empty($motDePasse) || empty($confirmationMotDePasse)) {
@@ -28,6 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erreur = 'Le mot de passe doit contenir au moins 6 caractères.';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $erreur = 'Veuillez entrer une adresse email valide.';
+    } elseif ($role === 'Administrateur' && $codeAdmin !== $adminCode) {
+        $erreur = 'Code d\'administration incorrect. Vous ne pouvez pas créer un compte administrateur.';
     } else {
         // Créer un utilisateur
         $utilisateur = new Utilisateur();
@@ -114,6 +120,18 @@ include 'includes/header.php';
                                     </select>
                                 </div>
                             </div>
+                            
+                            <div class="mb-3" id="admin-code-container" style="display: none;">
+                                <label for="code_admin" class="form-label">Code d'administration <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0">
+                                        <i class="bi bi-key-fill"></i>
+                                    </span>
+                                    <input type="password" class="form-control border-start-0" id="code_admin" name="code_admin" placeholder="Entrez le code d'administration">
+                                </div>
+                                <div class="form-text text-danger">Ce code est nécessaire pour créer un compte administrateur.</div>
+                            </div>
+                            
                             <div class="d-grid gap-2 mt-4">
                                 <button type="submit" class="btn btn-primary py-3">
                                     <i class="bi bi-person-plus-fill me-2"></i>S'inscrire
@@ -156,4 +174,29 @@ include 'includes/header.php';
     </div>
 </div>
 
-<?php include 'includes/footer.php'; ?> 
+<!-- Ajout du script JavaScript pour afficher/masquer le champ de code d'administration -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const roleSelect = document.getElementById('role');
+    const adminCodeContainer = document.getElementById('admin-code-container');
+    
+    // Fonction pour afficher/masquer le champ de code d'administration en fonction du rôle sélectionné
+    function toggleAdminCodeField() {
+        if (roleSelect.value === 'Administrateur') {
+            adminCodeContainer.style.display = 'block';
+            document.getElementById('code_admin').setAttribute('required', 'required');
+        } else {
+            adminCodeContainer.style.display = 'none';
+            document.getElementById('code_admin').removeAttribute('required');
+        }
+    }
+    
+    // Vérifier l'état initial
+    toggleAdminCodeField();
+    
+    // Ajouter un écouteur d'événements pour les changements de rôle
+    roleSelect.addEventListener('change', toggleAdminCodeField);
+});
+</script>
+
+<?php include 'includes/footer.php'; ?>

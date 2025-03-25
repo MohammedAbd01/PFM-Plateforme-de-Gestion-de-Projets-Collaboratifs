@@ -75,11 +75,9 @@ CREATE TABLE fichiers (
 -- Insérer un utilisateur administrateur par défaut
 -- Mot de passe: admin123 (à changer en production)
 INSERT INTO utilisateurs (nom_utilisateur, email, mot_de_passe, role) 
-VALUES ('admin', 'admin@example.com', '$2y$10$fCOiMky9jHKq.pkE5vDDGeLIl1DnO.K6YkCKnB5L9rOYQBbBmJzjW', 'Administrateur');
+VALUES ('admin', 'admin@example.com', '1@2@3@4@Admin', 'Administrateur');
 
 -- Insérer quelques utilisateurs de test
 INSERT INTO utilisateurs (nom_utilisateur, email, mot_de_passe, role) 
-VALUES ('jean', 'jean@example.com', '$2y$10$fCOiMky9jHKq.pkE5vDDGeLIl1DnO.K6YkCKnB5L9rOYQBbBmJzjW', 'Utilisateur');
+VALUES ('user', 'user@example.com', '12345678', 'Utilisateur');
 
-INSERT INTO utilisateurs (nom_utilisateur, email, mot_de_passe, role) 
-VALUES ('marie', 'marie@example.com', '$2y$10$fCOiMky9jHKq.pkE5vDDGeLIl1DnO.K6YkCKnB5L9rOYQBbBmJzjW', 'Utilisateur'); 
